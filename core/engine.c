@@ -1,6 +1,8 @@
 #include <engine.h>
+#include <window.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 uint64_t run(){
 	if (!init()){
@@ -10,5 +12,19 @@ uint64_t run(){
 }
 
 bool init(){
+	loop();
+	printf("Game Engine Initialized Successfully\n");
 	return true;
+}
+
+void loop(){
+	bool running = true;	
+	while (running) {
+		if (!running){ clean(); break; }
+		on_update();
+	}
+}
+
+void clean(){
+	printf("Game Engine Cleaned Successfully\n");
 }
